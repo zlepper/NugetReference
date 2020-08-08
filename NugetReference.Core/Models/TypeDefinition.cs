@@ -12,21 +12,15 @@ namespace NugetReference.Core.Models
         /// </summary>
         /// <example>List&lt;Foo&gt;</example>
         public string Name { get; set; }
-        
-        /// <summary>
-        /// The members that exists on this type
-        /// </summary>
-        public List<MemberDefinition> Members { get; set; }
-        
+
         /// <summary>
         /// The namespace the type is defined in
         /// </summary>
         public string? Namespace { get; set; }
 
-        protected TypeDefinition(string name, List<MemberDefinition> members, string? ns)
+        protected TypeDefinition(string name, string? ns)
         {
             Name = name;
-            Members = members;
             Namespace = ns;
         }
     }

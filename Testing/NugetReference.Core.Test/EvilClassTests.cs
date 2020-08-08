@@ -7,6 +7,7 @@ namespace NugetReference.Core.Test
     /// <summary>
     /// Verifies that we don't accidentally trigger code in <see cref="EvilAssembly.EvilClass">EvilClass</see> when scanning
     /// </summary>
+    [Parallelizable(ParallelScope.All)]
     [TestFixture]
     public class EvilClassTests
     {

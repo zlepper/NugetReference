@@ -26,8 +26,14 @@ namespace NugetReference.Core.Models
         /// </summary>
         public List<InterfaceDefinition> Implements { get; }
 
-        public ClassDefinition(string name, List<MemberDefinition> members, string? ns, bool isAbstract, bool isSealed, ClassDefinition? extends, List<InterfaceDefinition> implements) : base(name, members, ns)
+        /// <summary>
+        /// The members that exists on this type
+        /// </summary>
+        public List<MemberDefinition> Members { get; set; }
+
+        public ClassDefinition(string name, List<MemberDefinition> members, string? ns, bool isAbstract, bool isSealed, ClassDefinition? extends, List<InterfaceDefinition> implements) : base(name, ns)
         {
+            Members = members;
             IsAbstract = isAbstract;
             IsSealed = isSealed;
             Extends = extends;

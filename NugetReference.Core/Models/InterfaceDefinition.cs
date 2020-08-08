@@ -12,8 +12,14 @@ namespace NugetReference.Core.Models
         /// </summary>
         public List<InterfaceDefinition> Extends { get; set; }
 
-        public InterfaceDefinition(string name, List<MemberDefinition> members, string? ns, List<InterfaceDefinition> extends) : base(name, members, ns)
+        /// <summary>
+        /// The members that exists on this type
+        /// </summary>
+        public List<MemberDefinition> Members { get; set; }
+
+        public InterfaceDefinition(string name, List<MemberDefinition> members, string? ns, List<InterfaceDefinition> extends) : base(name, ns)
         {
+            Members = members;
             Extends = extends;
         }
     }

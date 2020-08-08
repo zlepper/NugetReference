@@ -22,14 +22,7 @@ namespace NugetReference.Core
             
             foreach (var type in assembly.DefinedTypes)
             {
-                var definition = type switch
-                {
-                    var cached when TypeCache.TryGetValue(cached, out var c) => c,
-                    var c when c.IsClass => AnalyseClass(c),
-                    var s when s.IsEnum => AnalyseEnum(s),
-                    var i when i.IsInterface => AnalyseInterface(i),
-                    _ => null
-                };
+                var definition = AnalyseType(type);
                 if (definition == null)
                 {
                     Console.WriteLine($"Unknown how to handle type: {type}");
@@ -47,6 +40,31 @@ namespace NugetReference.Core
             var name = t.Name;
             var members = t.DeclaredMembers.Select(AnalyseMember).ToList();
             return new ClassDefinition(name, members, t.Namespace, false, false, null, new List<InterfaceDefinition>());
+        }
+
+        private TypeDefinition? AnalyseType(TypeInfo t)
+        {
+            return t switch
+            {
+                var cached when TypeCache.TryGetValue(cached, out var c) => c,
+                var v when v.IsValueType => AnalyseValueType(v),
+                var c when c.IsClass => AnalyseClass(c),
+                var s when s.IsEnum => AnalyseEnum(s),
+                var i when i.IsInterface => AnalyseInterface(i),
+                _ => null
+            };
+        }
+
+        private TypeDefinition AnalyseValueType(TypeInfo v)
+        {
+            Console.WriteLine($"Is value type: {v}");
+
+            if (SimpleTypeReference.TryMatchSimpleTypeReference(v, out var typeReference))
+            {
+                return typeReference;
+            }
+            
+            return null;
         }
 
         private MemberDefinition AnalyseMember(MemberInfo m)
@@ -68,7 +86,13 @@ namespace NugetReference.Core
 
         public FieldDefinition AnalyseField(FieldInfo fi)
         {
-            return new FieldDefinition(fi.Name, fi.IsInitOnly);
+            var typeInfo = fi.FieldType.GetTypeInfo();
+            var type = AnalyseType(typeInfo);
+            if (type == null)
+            {
+                throw new Exception($"Unknown type field type: {typeInfo}");
+            }
+            return new FieldDefinition(fi.Name, fi.IsInitOnly, type);
         }
 
         public PropertyDefinition AnalyseProperty(PropertyInfo pi)
@@ -83,7 +107,7 @@ namespace NugetReference.Core
 
         public EnumDefinition AnalyseEnum(TypeInfo e)
         {
-            return new EnumDefinition(e.Name, new List<MemberDefinition>(), e.Namespace);
+            return new EnumDefinition(e.Name, e.Namespace);
         }
 
         public InterfaceDefinition AnalyseInterface(TypeInfo i)

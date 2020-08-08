@@ -8,11 +8,17 @@
         /// <summary>
         /// If this field is readonly
         /// </summary>
-        public bool Readonly { get; set; }
+        public bool Readonly { get; }
+        
+        /// <summary>
+        /// The type of the field
+        /// </summary>
+        public TypeDefinition Type { get; }
 
-        public FieldDefinition(string name, bool @readonly) : base(name)
+        public FieldDefinition(string name, bool @readonly, TypeDefinition type) : base(name)
         {
             Readonly = @readonly;
+            Type = type;
         }
     }
 }

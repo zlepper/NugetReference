@@ -4,7 +4,7 @@ namespace NugetReference.Core.Models
 {
     public class EnumDefinition : TypeDefinition
     {
-        public EnumDefinition(string name, List<MemberDefinition> members, string? ns) : base(name, members, ns)
+        public EnumDefinition(string name, string? ns) : base(name, ns)
         {
         }
     }
