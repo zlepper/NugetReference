@@ -1,0 +1,34 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NugetReference.Core", "NugetReference.Core\NugetReference.Core.csproj", "{1B0E594C-6BB1-4A86-9E64-993F9BEF0119}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NugetReference.Core.Test", "Testing\NugetReference.Core.Test\NugetReference.Core.Test.csproj", "{6951F922-D531-4BEC-8EF6-94DE7CD9C2EA}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NugetReference.EvilAssembly", "Testing\NugetReference.EvilAssembly\NugetReference.EvilAssembly.csproj", "{730F9541-A860-417E-9E93-12322840ADAA}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Testing", "Testing", "{E1AD9E1D-DFA7-43E6-A9A0-A767D9FD8B4E}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{1B0E594C-6BB1-4A86-9E64-993F9BEF0119}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{1B0E594C-6BB1-4A86-9E64-993F9BEF0119}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{1B0E594C-6BB1-4A86-9E64-993F9BEF0119}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{1B0E594C-6BB1-4A86-9E64-993F9BEF0119}.Release|Any CPU.Build.0 = Release|Any CPU
+		{6951F922-D531-4BEC-8EF6-94DE7CD9C2EA}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6951F922-D531-4BEC-8EF6-94DE7CD9C2EA}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{6951F922-D531-4BEC-8EF6-94DE7CD9C2EA}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{6951F922-D531-4BEC-8EF6-94DE7CD9C2EA}.Release|Any CPU.Build.0 = Release|Any CPU
+		{730F9541-A860-417E-9E93-12322840ADAA}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{730F9541-A860-417E-9E93-12322840ADAA}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{730F9541-A860-417E-9E93-12322840ADAA}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{730F9541-A860-417E-9E93-12322840ADAA}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{6951F922-D531-4BEC-8EF6-94DE7CD9C2EA} = {E1AD9E1D-DFA7-43E6-A9A0-A767D9FD8B4E}
+		{730F9541-A860-417E-9E93-12322840ADAA} = {E1AD9E1D-DFA7-43E6-A9A0-A767D9FD8B4E}
+	EndGlobalSection
+EndGlobal
